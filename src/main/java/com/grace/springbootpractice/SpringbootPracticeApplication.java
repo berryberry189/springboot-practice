@@ -4,7 +4,6 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,6 +21,7 @@ public class SpringbootPracticeApplication {
 		// 애플리케이션 컨텍스트
 		GenericApplicationContext applicationContext = new GenericApplicationContext();
 		applicationContext.registerBean(HelloController.class); // 빈 등록
+		applicationContext.registerBean(SimpleHelloService.class); // 빈 등록
 		applicationContext.refresh(); // 컨테이너 초기화 - 빈 오브젝트 생성해줌
 
 
