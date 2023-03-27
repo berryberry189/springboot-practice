@@ -3,6 +3,7 @@ package com.grace.springbootpractice;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -13,6 +14,16 @@ import org.springframework.web.servlet.DispatcherServlet;
 @ComponentScan // @Component 가 붙은 모든 클래스를 찾아서 빈으로 등록해줌
 public class SpringbootPracticeApplication {
 
+    @Bean
+    public ServletWebServerFactory servletWebServerFactory() {
+        return new TomcatServletWebServerFactory();
+    }
+
+    @Bean
+    public DispatcherServlet dispatcherServlet() {
+        return new DispatcherServlet();
+    }
+
     public static void main(String[] args) {
 
         // 애플리케이션 컨텍스트
@@ -22,11 +33,12 @@ public class SpringbootPracticeApplication {
             @Override
             protected void onRefresh() {
                 super.onRefresh();
-                // TomcatServletWebServer 를 만드는 도우미 클래스 (Jetty등으로 바꾸기도 가능)
-                ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-                WebServer webServer = serverFactory.getWebServer(servletContext -> {
-                    servletContext.addServlet("dispatcherServlet",
-                                    new DispatcherServlet(this))
+
+                ServletWebServerFactory servletWebServerFactory = this.getBean(ServletWebServerFactory.class);
+                DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
+
+                WebServer webServer = servletWebServerFactory.getWebServer(servletContext -> {
+                    servletContext.addServlet("dispatcherServlet", dispatcherServlet)
                             .addMapping("/*");
                 });
                 webServer.start();
