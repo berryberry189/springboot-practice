@@ -1,5 +1,6 @@
 package com.grace.springbootpractice;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,6 @@ public class SpringbootPracticeApplication {
     }
 
     public static void main(String[] args) {
-        MySpringApplication.run(SpringbootPracticeApplication.class, args);
+        SpringApplication.run(SpringbootPracticeApplication.class, args);
     }
 }
