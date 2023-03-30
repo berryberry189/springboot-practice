@@ -1,4 +1,4 @@
-package com.grace.springbootpractice;
+package com.grace.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,5 +12,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE) // class, interface, enum 에게 부여가능
 @Configuration
 @ComponentScan
-public @interface MySpringAnnotation {
+@EnableMyAutoConfiguration
+public @interface MySpringBootApplication {
 }

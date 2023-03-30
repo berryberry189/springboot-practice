@@ -1,8 +1,9 @@
 package com.grace.springbootpractice;
 
+import com.grace.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
-@MySpringAnnotation
+@MySpringBootApplication
 public class SpringbootPracticeApplication {
 
     public static void main(String[] args) {
