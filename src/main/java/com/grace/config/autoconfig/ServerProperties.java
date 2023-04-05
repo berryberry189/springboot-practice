@@ -1,13 +1,13 @@
 package com.grace.config.autoconfig;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.grace.config.MyConfigurationProperties;
 
+@MyConfigurationProperties(prefix = "server")
 public class ServerProperties {
 
-    @Value("${contextPath}")
+    // server.contextPath
     private String contextPath;
 
-    @Value("${port:}")
     private int port;
 
     public String getContextPath() {
