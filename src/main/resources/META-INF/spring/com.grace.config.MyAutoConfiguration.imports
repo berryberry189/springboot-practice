@@ -1,3 +1,4 @@
 com.grace.config.autoconfig.DispatcherServletConfig
 com.grace.config.autoconfig.TomcatWebServerConfig
 com.grace.config.autoconfig.JettyWebServerConfig
+com.grace.config.autoconfig.PropertyPlaceholderConfig
