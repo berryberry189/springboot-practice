@@ -3,3 +3,4 @@ com.grace.config.autoconfig.TomcatWebServerConfig
 com.grace.config.autoconfig.JettyWebServerConfig
 com.grace.config.autoconfig.PropertyPlaceholderConfig
 com.grace.config.autoconfig.PropertyPostProcessorConfig
+com.grace.config.autoconfig.DataSourceConfig
