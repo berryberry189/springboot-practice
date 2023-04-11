@@ -6,7 +6,7 @@ public interface HelloRepository {
 
     void increaseCount(String name);
 
-    default int count(String name) {
+    default int countOf(String name) {
         Hello hello = findHello(name);
         return hello == null ? 0 : hello.getCount();
     }

@@ -3,28 +3,11 @@ package com.grace.springbootpractice;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-@UnitTest
-@interface FastUnitTest {
-
-}
-@Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Test
-@interface UnitTest {
-
-}
-
 public class HelloServiceTest {
-    @FastUnitTest
+
+    @Test
     void simpleHelloService() {
-        SimpleHelloService helloService = new SimpleHelloService();
+        SimpleHelloService helloService = new SimpleHelloService(getHelloRepository());
 
         String ret = helloService.sayHello("Test");
 
@@ -38,6 +21,20 @@ public class HelloServiceTest {
         String ret = decorator.sayHello("Test");
 
         Assertions.assertThat(ret).isEqualTo("*Test*");
+    }
+
+    private static HelloRepository getHelloRepository() {
+        return new HelloRepository() {
+            @Override
+            public Hello findHello(String name) {
+                return null;
+            }
+
+            @Override
+            public void increaseCount(String name) {
+
+            }
+        };
     }
 
 }
