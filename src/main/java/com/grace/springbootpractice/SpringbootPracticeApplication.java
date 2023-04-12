@@ -1,14 +1,13 @@
 package com.grace.springbootpractice;
 
-import com.grace.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.annotation.PostConstruct;
 
-@MySpringBootApplication
+@SpringBootApplication
 public class SpringbootPracticeApplication{
-
     private final JdbcTemplate jdbcTemplate;
 
     public SpringbootPracticeApplication(JdbcTemplate jdbcTemplate) {
@@ -22,7 +21,5 @@ public class SpringbootPracticeApplication{
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootPracticeApplication.class, args);
-
     }
-
 }
